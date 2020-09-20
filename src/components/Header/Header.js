@@ -6,10 +6,10 @@ import {
 
 const Header = () => {
   return (
-    <Box>
+    <Box textAlign="center" m={2}>
       <Typography variant="h5" component="h1" >Hangman</Typography>
-      <Typography>Find the hidden word</Typography>
-      <Typography variant="body2" >(Enter some letter)</Typography>
+      <Typography display="inline" component="pre">Find the hidden word </Typography>
+      <Typography display="inline" variant="body2" color="textSecondary" >(Enter some letter)</Typography>
     </Box>
   )
 }

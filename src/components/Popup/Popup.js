@@ -21,13 +21,15 @@ const Popup = ({ selectedWord, playable, playAgain, closePopUp, message }) => {
   }, [selectedWord])
   
   return (
-    <Dialog open={!playable} onClose={closePopUp}>
+    <Dialog open={!playable} onClose={closePopUp} disableBackdropClick>
       <DialogTitle>{message}</DialogTitle>
       <DialogContent>
-        <DialogContentText>Correct answer is {correctWord}</DialogContentText>
+        <DialogContentText>Correct answer is&nbsp;
+          <Typography variant="subtitle2" display="inline">{correctWord}</Typography>
+        </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={playAgain}>Play Again</Button>
+        <Button color="primary" onClick={playAgain}>Play Again</Button>
       </DialogActions>
     </Dialog>
   )

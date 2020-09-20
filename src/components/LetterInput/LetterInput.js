@@ -12,17 +12,28 @@ const LetterInput = ({ handleLetter }) => {
   }
   
   return (
-    <Box component="form" onSubmit={handleEnter}>
+    <Box
+      component="form" 
+      onSubmit={handleEnter}
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      my={2}
+      mx={'auto'}
+      width={300}
+    >
       <TextField 
         inputProps={{
           maxlength: 1, 
           pattern: '[a-z]'
         }} 
-        helperText="Please enter a letter"
         value={inputLetter}
         onChange={e => setInputLetter(e.target.value.toLowerCase())} 
+        variant="outlined"
+        size="small"
+        style={{width: 200}}
       />
-      <Button type="submit">Enter</Button>
+      <Button color="primary" variant="contained" type="submit">Enter</Button>
     </Box>
   )
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import _ from 'lodash';
-import { Box } from 'material-ui';
+import { Box, Typography } from 'material-ui';
 
 const Blank = ({ rightLetters, selectedWord}) => {
   
   return (
-    <Box display="flex">
+    <Box display="flex" justifyContent="center" my={1}>
       {selectedWord.split('').map((letter, index) => (
         <Box m={1} key={index}>
-          {rightLetters.includes(letter) ? letter : '_'}
+          <Typography variant="h4">{rightLetters.includes(letter) ? letter : '_'}</Typography>
         </Box>
       ))}
     </Box>
