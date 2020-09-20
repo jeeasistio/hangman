@@ -102,11 +102,12 @@ const App = () => {
       dispatch({ type: 'WIN_OR_LOSE', payload: 'You Lost!' });
     }
 
-    window.addEventListener('keydown', handleLetter);
+    if (playable) {
+      window.addEventListener('keydown', handleLetter);
+      return () => window.removeEventListener('keydown', handleLetter);
+    }
 
-    return () => window.removeEventListener('keydown', handleLetter);
-
-  }, [rightLetters, wrongLetters])
+  }, [rightLetters, wrongLetters, playable])
 
   return (
     <CssBaseline>
