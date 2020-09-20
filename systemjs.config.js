@@ -19,7 +19,8 @@ SystemJS.config({
     'systemjs-babel-build': 'systemjs-plugin-babel@latest/systemjs-babel-browser.js',
     'react': 'react@16.13.1/umd/react.production.min.js',
     'react-dom': 'react-dom@16.13.1/umd/react-dom.production.min.js',
-    'css': 'systemjs-plugin-css@latest/css.js'
+    'css': 'systemjs-plugin-css@latest/css.js',
+    'material-ui': '@material-ui/core@latest/umd/material-ui.production.min.js'
   },
   transpiler: 'plugin-babel'
 });
