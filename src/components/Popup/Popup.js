@@ -25,7 +25,7 @@ const Popup = ({ selectedWord, playable, playAgain, closePopUp, message }) => {
       <DialogTitle>{message}</DialogTitle>
       <DialogContent>
         <DialogContentText>Correct answer is&nbsp;
-          <Typography variant="subtitle2" display="inline">{correctWord}</Typography>
+          <Typography style={{fontWeight: 500}} display="inline">{correctWord}</Typography>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

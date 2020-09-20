@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Box, Paper } from 'material-ui';
+import uuid from 'uuid-v4';
 
 const UsedWords = ({ wrongLetters }) => {
   return (
@@ -12,8 +13,8 @@ const UsedWords = ({ wrongLetters }) => {
       width={300}
     >
       <Typography variant="subtitle2">Wrong Letters</Typography>
-      {wrongLetters.length > 0 && wrongLetters.map((letter, index) => (
-        <Typography key={index} display="inline" component="pre">{letter}, </Typography>
+      {wrongLetters.length > 0 && wrongLetters.map(letter => (
+        <Typography key={uuid()} display="inline" component="pre">{letter} , </Typography>
       ))}
     </Box>
   )

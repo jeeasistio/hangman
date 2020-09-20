@@ -57,7 +57,6 @@ const reducer = (state, action) => {
         playable: true
       }
       break;
-
     default:
       return state;
   }
@@ -71,20 +70,20 @@ const App = () => {
 
   const [clickedAgain, setClickedAgain] = useState(false);
 
-  const handleLetter = (e, letter) => {
-    e.preventDefault();
+  const handleLetter = (e) => {
+    const letter = e.key.toLowerCase();
 
-    if (selectedWord.includes(letter)) {
-      !rightLetters.includes(letter) ?
-        dispatch({ type: 'RIGHT_LETTER_CLICKED', payload: letter }) :
-        setClickedAgain(true)
-    } else {
-      !wrongLetters.includes(letter) ?
-        dispatch({ type: 'WRONG_LETTER_CLICKED', payload: letter }) :
-        setClickedAgain(true)
+    if (letter.match(/^[a-z]$/)) {
+      if (selectedWord.includes(letter)) {
+        !rightLetters.includes(letter) ?
+          dispatch({ type: 'RIGHT_LETTER_CLICKED', payload: letter }) :
+          setClickedAgain(true)
+      } else {
+        !wrongLetters.includes(letter) ?
+          dispatch({ type: 'WRONG_LETTER_CLICKED', payload: letter }) :
+          setClickedAgain(true)
+      }
     }
-
-    e.target.reset()
   }
 
   const playAgain = () => dispatch({ type: 'PLAY_AGAIN' });
@@ -94,12 +93,19 @@ const App = () => {
   const closeNotif = () => setClickedAgain(false);
 
   useEffect(() => {
+
     if (!_.difference(selectedWord.split(''), rightLetters).length) {
       dispatch({ type: 'WIN_OR_LOSE', payload: 'You Win!' });
     }
+
     if (wrongLetters.length === 5) {
       dispatch({ type: 'WIN_OR_LOSE', payload: 'You Lost!' });
     }
+
+    window.addEventListener('keydown', handleLetter);
+
+    return () => window.removeEventListener('keydown', handleLetter);
+
   }, [rightLetters, wrongLetters])
 
   return (
